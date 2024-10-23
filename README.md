@@ -20,7 +20,7 @@ Automatiza o envio de mensagens de texto pelo WhatsApp Web usando Selenium.
 Este código permite o envio de vídeos aleatórios para contatos no WhatsApp Web. Ele seleciona um vídeo de uma pasta ou lista e realiza o envio.
 
 ### Instruções de Uso:
-- **Alterações Necessárias:** Substitua todas as ocorrências de `SEU_USUARIO` pelo seu nome de usuário do Windows para que o código localize corretamente os arquivos no seu sistema. Defina as variáveis `pasta_nao_enviados` e `pasta_enviados`
+- **Alterações Necessárias:** Substitua todas as ocorrências de `SEU_USUARIO` pelo seu nome de usuário do Windows para que o código localize corretamente os arquivos no seu sistema. Defina as variáveis `pasta_nao_enviados` e `pasta_enviados`. Certifique-se de colocar \\ (duas barras invertidas) na declaração do caminho, seguindo o exemplo deixado no próprio código.
 - **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
 ## 4. `Enviar_Whatsapp_video_Especifico.py`
