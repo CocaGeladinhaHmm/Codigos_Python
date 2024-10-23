@@ -13,14 +13,14 @@ Este código automatiza o envio de figurinhas (stickers) pelo WhatsApp Web, util
 Automatiza o envio de mensagens de texto pelo WhatsApp Web usando Selenium.
 
 ### Instruções de Uso:
-- **Alterações Necessárias:** Atualize `SEU_USUARIO` para o seu nome de usuário do Windows.
+- **Alterações Necessárias:** Substitua todas as ocorrências de `SEU_USUARIO` pelo seu nome de usuário do Windows para que o código localize corretamente os arquivos no seu sistema.
 - **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
 ## 3. `Enviar_Whatsapp_video_Aleatorio.py`
 Este código permite o envio de vídeos aleatórios para contatos no WhatsApp Web. Ele seleciona um vídeo de uma pasta ou lista e realiza o envio.
 
 ### Instruções de Uso:
-- **Alterações Necessárias:** Certifique-se de substituir `SEU_USUARIO` pelo nome do seu usuário do Windows para que o código encontre os vídeos no local correto.
+- **Alterações Necessárias:** Substitua todas as ocorrências de `SEU_USUARIO` pelo seu nome de usuário do Windows para que o código localize corretamente os arquivos no seu sistema. Defina as variáveis `pasta_nao_enviados` e `pasta_enviados`
 - **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
 ## 4. `Enviar_Whatsapp_video_Especifico.py`
