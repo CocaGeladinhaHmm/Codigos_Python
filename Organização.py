@@ -1,7 +1,7 @@
 
 # Codigos de Automação para WhatsApp e Organização de Pastas
 
-Este repositório contém diversos Codigos em Python para automatização de envio de mensagens no WhatsApp Web e organização de pastas. Abaixo está uma descrição detalhada de cada Codigo, bem como as configurações que você deve ajustar antes de utilizá-los.
+Este repositório contém diversos codigos em Python para automatização de envio de mensagens no WhatsApp Web e organização de pastas. Abaixo está uma descrição detalhada de cada Codigo, bem como as configurações que você deve ajustar antes de utilizá-los.
 
 ## 1. `Enviar_Whatsapp_figurinha.py`
 Este Codigo automatiza o envio de figurinhas (stickers) pelo WhatsApp Web, utilizando a biblioteca Selenium para interagir com a interface do WhatsApp Web.
