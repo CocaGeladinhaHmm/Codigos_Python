@@ -21,6 +21,7 @@ Este código permite o envio de vídeos aleatórios para contatos no WhatsApp We
 
 ### Instruções de Uso:
 - **Alterações Necessárias:**
+  
  Substitua todas as ocorrências de `SEU_USUARIO` pelo seu nome de usuário do Windows para que o código localize corretamente os arquivos no seu sistema.
 
  Defina as variáveis `pasta_nao_enviados` e `pasta_enviados`.
