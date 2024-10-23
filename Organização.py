@@ -1,117 +1,59 @@
-import os
-import shutil
-import time
-import curses
-import subprocess
 
-# Caminho da pasta de origem e da pasta de destino
-source_folder = os.path.expanduser("C:\\Pasta\\A\\Ser\\Organizada")
-destination_folder = "C:\\Pasta\\De\\Destino\\Da\\Organização"
+# Codigos de Automação para WhatsApp e Organização de Pastas
 
-# Cria as pastas de destino se não existirem
-def criar_pastas():
-    extensions = set()
-    for item in os.listdir(source_folder):
-        item_path = os.path.join(source_folder, item)
-        if os.path.isfile(item_path):
-            ext = os.path.splitext(item)[1].lower()
-            if ext:
-                extensions.add(ext)
-    
-    for ext in extensions:
-        folder = os.path.join(destination_folder, f".{ext[1:].upper()}s")
-        os.makedirs(folder, exist_ok=True)
-    
-    os.makedirs(os.path.join(destination_folder, "Outros"), exist_ok=True)
+Este repositório contém diversos Codigos em Python para automatização de envio de mensagens no WhatsApp Web e organização de pastas. Abaixo está uma descrição detalhada de cada Codigo, bem como as configurações que você deve ajustar antes de utilizá-los.
 
-# Move os itens para as pastas de destino apropriadas
-def mover_itens():
-    for item in os.listdir(source_folder):
-        src_path = os.path.join(source_folder, item)
+## 1. `Enviar_Whatsapp_figurinha.py`
+Este Codigo automatiza o envio de figurinhas (stickers) pelo WhatsApp Web, utilizando a biblioteca Selenium para interagir com a interface do WhatsApp Web.
 
-        # Evitar mover o diretório de destino para dentro de si mesmo
-        if os.path.abspath(src_path) == os.path.abspath(destination_folder):
-            continue
+### Instruções de Uso:
+- **Alterações Necessárias:** Substitua todas as ocorrências de `SEU_USUARIO` pelo seu nome de usuário do Windows para que o Codigo localize corretamente os arquivos no seu sistema.
+- **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
-        if os.path.isfile(src_path):
-            ext = os.path.splitext(item)[1].lower()
-            if ext:
-                folder = os.path.join(destination_folder, f".{ext[1:].upper()}s")
-            else:
-                folder = os.path.join(destination_folder, "Outros")
-            dest_path = os.path.join(folder, item)
-            shutil.move(src_path, dest_path)
-        elif os.path.isdir(src_path):
-            # Move pastas para "Outros"
-            dest_folder = os.path.join(destination_folder, "Outros", item)
-            shutil.move(src_path, dest_folder)
+## 2. `Enviar_Whatsapp_mensagem.py`
+Automatiza o envio de mensagens de texto pelo WhatsApp Web usando Selenium.
 
-# Menu interativo usando curses
-def confirmation_menu(stdscr):
-    curses.curs_set(0)
-    curses.start_color()
-    curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_GREEN)
-    curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
+### Instruções de Uso:
+- **Alterações Necessárias:** Atualize `SEU_USUARIO` para o seu nome de usuário do Windows.
+- **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
-    menu = ['Sim', 'Não']
-    current_row = 0
+## 3. `Enviar_Whatsapp_video_Aleatorio.py`
+Este Codigo permite o envio de vídeos aleatórios para contatos no WhatsApp Web. Ele seleciona um vídeo de uma pasta ou lista e realiza o envio.
 
-    while True:
-        stdscr.clear()
-        height, width = stdscr.getmaxyx()
+### Instruções de Uso:
+- **Alterações Necessárias:** Certifique-se de substituir `SEU_USUARIO` pelo nome do seu usuário do Windows para que o Codigo encontre os vídeos no local correto.
+- **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
-        prompt = f"Você deseja mover os itens da pasta '{source_folder}' para '{destination_folder}'?"
-        sub_prompt = "Os itens serão separados por tipo."
-        stdscr.attron(curses.color_pair(2))
-        stdscr.addstr(height // 2 - 3, (width - len(prompt)) // 2, prompt)
-        stdscr.addstr(height // 2 - 1, (width - len(sub_prompt)) // 2, sub_prompt)
-        stdscr.attroff(curses.color_pair(2))
+## 4. `Enviar_Whatsapp_video_Especifico.py`
+Este Codigo automatiza o envio de um vídeo específico para contatos no WhatsApp Web.
 
-        for idx, row in enumerate(menu):
-            x = width // 2 - len(row) // 2
-            y = height // 2 + idx
-            if idx == current_row:
-                stdscr.attron(curses.color_pair(1))
-                stdscr.addstr(y, x, row)
-                stdscr.attroff(curses.color_pair(1))
-            else:
-                stdscr.attron(curses.color_pair(2))
-                stdscr.addstr(y, x, row)
-                stdscr.attroff(curses.color_pair(2))
+### Instruções de Uso:
+- **Alterações Necessárias:** Substitua `SEU_USUARIO` pelo nome de usuário do Windows.
+- **Pré-requisitos:** Instale as bibliotecas necessárias como `selenium` e configure corretamente o WebDriver do navegador que você estiver utilizando (Chrome ou Firefox).
 
-        key = stdscr.getch()
+## 5. `Organização.py`
+Defina as variáveis `source_folder` (origem) e `destination_folder` (destino) para especificar de onde os arquivos serão movidos e para onde serão transferidos.
 
-        if key == curses.KEY_UP and current_row > 0:
-            current_row -= 1
-        elif key == curses.KEY_DOWN and current_row < len(menu) - 1:
-            current_row += 1
-        elif key == curses.KEY_ENTER or key in [10, 13]:
-            if menu[current_row] == 'Sim':
-                return True
-            else:
-                return False
+### Instruções de Uso:
+- **Alterações Necessárias:** Ao definir as variaveis de origem e destino, certifique-se de colocar `\\`(Duas barras invertidas) na declaração do caminho, seguindo o exeplo deixado no proprio Codigo.
+- **Funcionamento:** Ele reorganiza arquivos e pastas dentro do diretório indicado.
 
-        stdscr.refresh()
+## 6. `reordenar_pastas.py`
+Codigo para reordenação de pastas. Ele permite que você altere a ordem das pastas manualmente ou automaticamente, reorganizando o conteúdo da pasta onde o Codigo está localizado.
 
-# Função principal do programa
-def main(stdscr):
-    if confirmation_menu(stdscr):
-        criar_pastas()
-        mover_itens()
-        stdscr.clear()
-        success_msg = f"Itens movidos com sucesso de '{source_folder}' para '{destination_folder}'."
-        stdscr.addstr(curses.LINES // 2, (curses.COLS - len(success_msg)) // 2, success_msg)
-        stdscr.refresh()
-        time.sleep(3)
-        
-        # Abrir a pasta de destino
-        subprocess.Popen(f'explorer {destination_folder}')
-    else:
-        stdscr.clear()
-        cancel_msg = "Operação cancelada."
-        stdscr.addstr(curses.LINES // 2, (curses.COLS - len(cancel_msg)) // 2, cancel_msg)
-        stdscr.refresh()
-        time.sleep(3)
+### Instruções de Uso:
+- **Alterações Necessárias:** Nenhuma alteração específica é necessária, exceto rodar o Codigo no diretório onde deseja reorganizar as pastas.
+- **Funcionamento:** Ele reorganiza pastas no diretório onde o próprio Codigo está salvo.
 
-# Executa o programa dentro do wrapper do curses
-curses.wrapper(main)
+---
+
+### Observações Gerais:
+- Certifique-se de ter o Python instalado.
+- Instale as bibliotecas necessárias rodando:
+  ```bash
+  pip install selenium
+  ```
+- Configure o WebDriver do navegador (como o ChromeDriver) e certifique-se de que ele esteja acessível no PATH do sistema.
+  
+### Configurações Específicas:
+- Para todos os Codigos que contêm `SEU_USUARIO`, altere esse valor para o nome de usuário correspondente ao seu perfil do Windows.
